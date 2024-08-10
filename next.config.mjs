@@ -21,7 +21,7 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://bazar-ecommerce-liard.vercel.app/',
+            value: process.env.NEXT_PUBLIC_BASE_URL,
           }, // replace this your actual origin
           {
             key: 'Access-Control-Allow-Methods',
