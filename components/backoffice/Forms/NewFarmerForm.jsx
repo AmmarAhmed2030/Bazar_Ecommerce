@@ -40,7 +40,6 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
   const router = useRouter();
 
   const id = updateData?.userId ?? '';
-  const profileId = updateData?.id;
   console.log('id : ', id);
   const isActive = watch('isActive');
 
@@ -56,15 +55,14 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
     data.userId = id;
     data.profileImageUrl = imageUrl;
     data.email = user?.email;
-    if (profileId) {
-      makePutRequest(
-        setLoading,
-        `/api/farmers/update/${id}`,
-        data,
-        'FarmerProfile',
-        redirect,
-      );
-    }
+
+    makePutRequest(
+      setLoading,
+      `/api/farmers/update/${id}`,
+      data,
+      'FarmerProfile',
+      redirect,
+    );
   }
   return (
     <div>
