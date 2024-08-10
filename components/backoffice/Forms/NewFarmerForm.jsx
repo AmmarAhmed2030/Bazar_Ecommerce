@@ -56,7 +56,7 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
     data.profileImageUrl = imageUrl;
     data.email = user?.email;
 
-    makePutRequest(
+    await makePutRequest(
       setLoading,
       `/api/farmers/update/${id}`,
       data,
