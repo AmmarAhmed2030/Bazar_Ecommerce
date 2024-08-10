@@ -36,7 +36,7 @@ export default function CartSubTotalCard({ subTotal }) {
       <div className="flex justify-center px-4 mt-8">
         {' '}
         <Link
-          href="checkout"
+          href="/checkout"
           className="bg-lime-600 text-slate-50 hover:bg-lime-800  dark:text-slate-50  transition-all duration-500 rounded-lg py-3 px-3"
         >
           Continue to Checkout
