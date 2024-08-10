@@ -22,7 +22,7 @@ export async function PUT(request, { params: { id } }) {
       mainCrop,
     } = await request.json();
     const existingUser = await db.user.findUnique({
-      where: { id: userId },
+      where: { id },
     });
     if (!existingUser) {
       return NextResponse.json(
