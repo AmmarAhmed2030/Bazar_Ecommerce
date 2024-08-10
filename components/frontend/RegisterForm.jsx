@@ -19,7 +19,6 @@ export default function RegisterForm({ role = 'USER' }) {
   const [emailErr, setEmailErr] = useState(''); // Ensure this is not being overwritten
 
   async function onSubmit(data) {
-    console.log('form data ', data);
     try {
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
