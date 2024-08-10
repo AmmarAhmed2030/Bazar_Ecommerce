@@ -50,7 +50,6 @@
     "react-spinners": "^0.14.1",
     "react-to-print": "^2.15.1",
     "redux": "^5.0.1",
-    "redux-persist": "^6.0.0",
     "resend": "^3.4.0",
     "sass": "^1.77.4",
     "sweetalert2": "^11.12.1",
