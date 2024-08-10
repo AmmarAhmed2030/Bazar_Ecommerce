@@ -13,7 +13,7 @@ export default function NewUserForm({ updateData = {}, user = {} }) {
   //Heading
   //Table
   const initialImageUrl = updateData?.profileImage ?? '';
-  const id = user?.id ?? '';
+  const id = updateData?.userId ?? '';
   const profileId = updateData?.id;
   const dateOfBirthNormal = convertIsoDateToNormal(updateData.dateOfBirth);
   updateData.dateOfBirth = dateOfBirthNormal;

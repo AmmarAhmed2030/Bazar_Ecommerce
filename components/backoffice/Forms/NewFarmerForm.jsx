@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-export default function NewFarmerForm({ updateData = {} }) {
+export default function NewFarmerForm({ updateData = {}, user = {} }) {
   //Heading
   //Table
   const initialImageUrl = updateData?.profileImageUrl ?? '';
@@ -34,11 +34,13 @@ export default function NewFarmerForm({ updateData = {} }) {
       isActive: true,
 
       ...updateData,
+      email: user?.email,
     },
   });
   const router = useRouter();
 
   const id = updateData?.userId ?? '';
+  const profileId = updateData?.id;
   console.log('id : ', id);
   const isActive = watch('isActive');
 
@@ -53,14 +55,16 @@ export default function NewFarmerForm({ updateData = {} }) {
     data.products = products;
     data.userId = id;
     data.profileImageUrl = imageUrl;
-
-    await makePutRequest(
-      setLoading,
-      `/api/farmers/update/${id}`,
-      data,
-      'FarmerProfile',
-      redirect,
-    );
+    data.email = user?.email;
+    if (profileId) {
+      makePutRequest(
+        setLoading,
+        `/api/farmers/update/${id}`,
+        data,
+        'FarmerProfile',
+        redirect,
+      );
+    }
   }
   return (
     <div>
@@ -107,6 +111,8 @@ export default function NewFarmerForm({ updateData = {} }) {
                 message: 'Invalid email address',
               },
             })}
+            disabled={true}
+            defaultValue={updateData?.email}
             errors={errors}
             className="w-full"
           />
