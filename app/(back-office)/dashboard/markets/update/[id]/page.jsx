@@ -4,7 +4,7 @@ import { getData } from '@/lib/getData';
 import React from 'react';
 
 export default async function NewMarket({ params: { id } }) {
-  const categoriesData = await getData('categories');
+  const categoriesData = await getData('/categories');
 
   const categories = categoriesData.map((category) => {
     return {
@@ -13,7 +13,7 @@ export default async function NewMarket({ params: { id } }) {
     };
   });
   console.log(categoriesData);
-  const market = await getData(`markets/${id}`);
+  const market = await getData(`/markets/${id}`);
   return (
     <div>
       <FormHeader title="Update Market" />

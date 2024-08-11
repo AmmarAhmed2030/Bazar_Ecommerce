@@ -7,12 +7,12 @@ import Image from 'next/image';
 import React from 'react';
 
 export default async function page({ params: { slug } }) {
-  const training = await getData(`trainings/training/${slug}`);
+  const training = await getData(`/trainings/training/${slug}`);
   const trainingId = training.id;
   const categoryId = training.categoryId;
-  const category = await getData(`categories/${categoryId}`);
+  const category = await getData(`/categories/${categoryId}`);
   const normalDate = convertIsoDateToNormal(training.createdAt);
-  const allTrainings = await getData('trainings');
+  const allTrainings = await getData('/trainings');
   const recentTrainings = allTrainings.filter(
     (training) => training.id !== trainingId,
   );

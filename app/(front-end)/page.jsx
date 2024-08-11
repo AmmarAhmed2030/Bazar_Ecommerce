@@ -7,8 +7,8 @@ import { getData } from '@/lib/getData';
 
 export default async function Home() {
   let categoriesData = [];
-  categoriesData = await getData('categories');
-  const trainings = await getData('trainings');
+  categoriesData = await getData('/categories');
+  const trainings = await getData('/trainings');
   console.log(categoriesData);
   const categories = categoriesData.filter(
     (category) => category.products.length > 4,

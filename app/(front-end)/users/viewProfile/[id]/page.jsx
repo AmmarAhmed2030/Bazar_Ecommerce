@@ -1,20 +1,36 @@
 import { convertIsoDateToNormal } from '@/lib/convertIsoDateToNormal';
 import { getData } from '@/lib/getData';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function UserProfile({ params: { id } }) {
   const userId = id;
-  const profile = await getData(`users/profile/${userId}`);
+  const profile = await getData(`/users/profile/${userId}`);
+  console.log(profile);
+  if (!profile) {
+    return (
+      <div className="flex items-center justify-center gap-4 py-8 text-2xl">
+        <span className="text-slate-50">No Profile Yet : </span>
+        <Link
+          href={`/users/update/${userId}`}
+          className="text-lime-600 flex items-center justify-center gap-2 hover:text-lime-800"
+        >
+          <span>Create Your Profile</span> <ArrowRight />
+        </Link>
+      </div>
+    );
+  }
   return (
     <div
       className="dark:bg-slate-700 dark:text-white bg-white text-slate-800
       p-6 rounded-lg shadow-md max-w-3xl mx-auto"
     >
       <div className="flex items-center mb-6 border-b border-slate-50 py-4 pb-8">
-        {profile.profileImage ? (
+        {profile?.profileImage ? (
           <Image
-            src={profile.profileImage}
-            alt={`${profile.name}'s profile picture`}
+            src={profile?.profileImage}
+            alt={`${profile?.name}'s profile picture`}
             className="w-24 h-24 rounded-full mr-4"
             width={96}
             height={96}

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 
 export default async function page({ params: { id } }) {
-  const order = await getData(`orders/${id}`);
+  const order = await getData(`/orders/${id}`);
   const { orderItems } = order;
   const subTotal = orderItems
     .reduce((acc, item) => acc + item.price * item.quantity, 0)

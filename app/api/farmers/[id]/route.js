@@ -1,6 +1,7 @@
 import db from '@/lib/db';
 import { NextResponse } from 'next/server';
 export async function GET(request, { params: { id } }) {
+  console.log('userId from api/farmers/[id]/route.js ', id);
   try {
     const farmer = await db.farmerProfile.findUnique({
       where: { userId: id },

@@ -19,7 +19,7 @@ export default function UserAvatar2({ handleLogout, session }) {
   const id = session?.user?.id;
   const role = session?.user?.role;
   const image = session?.user?.image;
-
+  console.log(id);
   const closeDropdown = () => setIsOpen(false);
 
   return (

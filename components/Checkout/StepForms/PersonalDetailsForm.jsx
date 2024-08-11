@@ -13,6 +13,7 @@ import { useSession } from 'next-auth/react';
 export default function PersonalDetailsForm() {
   const { data: session } = useSession();
   const userId = session?.user?.id;
+  const email = session?.user?.email;
   const currentStep = useSelector((store) => store.checkout.currentStep);
   const existingFormData = useSelector(
     (store) => store.checkout.checkoutFormData,
@@ -70,14 +71,16 @@ export default function PersonalDetailsForm() {
           label="Email Address"
           name="email"
           register={register('email', {
-            required: 'Email is required',
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               message: 'Invalid email address',
             },
           })}
           errors={errors}
+          defaultValue={email}
+          disabled={true}
           type="email"
+          isRequired={true}
           className="w-full"
         />
         <TextInput

@@ -5,7 +5,7 @@ import { getData } from '@/lib/getData';
 import React from 'react';
 
 export default async function NewTraining({ params: { id } }) {
-  const categoriesData = await getData('categories');
+  const categoriesData = await getData('/categories');
 
   const categories = categoriesData.map((category) => {
     return {
@@ -14,7 +14,7 @@ export default async function NewTraining({ params: { id } }) {
     };
   });
   console.log(categoriesData);
-  const training = await getData(`trainings/${id}`);
+  const training = await getData(`/trainings/${id}`);
   return (
     <div>
       <FormHeader title="Update Training" />

@@ -5,11 +5,11 @@ import Image from 'next/image';
 import React from 'react';
 
 export default async function page({ params: { slug } }) {
-  const market = await getData(`markets/details/${slug}`);
+  const market = await getData(`/markets/details/${slug}`);
   const marketCategoryIds = market.categoryIds;
   console.log(marketCategoryIds);
 
-  const allCategories = await getData('categories');
+  const allCategories = await getData('/categories');
   const categories = allCategories.filter(
     (category) => category.products.length > 4,
   );

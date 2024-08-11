@@ -1,9 +1,12 @@
 import { getData } from '@/lib/getData';
 import Image from 'next/image';
 
-export default async function UserProfile({ params: { id } }) {
+export default async function FarmerProfile({ params }) {
+  const { id } = params;
   const userId = id;
-  const profile = await getData(`farmers/${userId}`);
+  console.log('user Id from farmers viewProfile', userId);
+  const profile = await getData(`/farmers/farmer/${id}`);
+  console.log('profile Farmer from farmers viewProfile', profile);
   return (
     <div
       className=" lg:mx-auto ml-4 mr-4  dark:bg-slate-700 dark:text-white bg-white text-slate-800

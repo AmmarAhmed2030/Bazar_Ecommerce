@@ -12,8 +12,9 @@ import { useForm } from 'react-hook-form';
 export default function NewUserForm({ updateData = {}, user = {} }) {
   //Heading
   //Table
+  console.log('updateData from newUserForm', updateData);
   const initialImageUrl = updateData?.profileImage ?? '';
-  const id = updateData?.userId ?? '';
+  const id = user?.id;
   const profileId = updateData?.id;
   const dateOfBirthNormal = convertIsoDateToNormal(updateData.dateOfBirth);
   updateData.dateOfBirth = dateOfBirthNormal;
@@ -44,7 +45,7 @@ export default function NewUserForm({ updateData = {}, user = {} }) {
     data.dateOfBirth = isoFormattedDate;
     data.email = user?.email;
     if (profileId) {
-      makePutRequest(
+      await makePutRequest(
         setLoading,
         `/api/users/update-profile/${id}`,
         data,
@@ -52,7 +53,7 @@ export default function NewUserForm({ updateData = {}, user = {} }) {
         redirect,
       );
     } else {
-      makePostRequest(
+      await makePostRequest(
         setLoading,
         `/api/users/create-profile`,
         data,

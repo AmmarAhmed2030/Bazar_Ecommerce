@@ -54,6 +54,10 @@ export async function PUT(request, { params: { id } }) {
         mainCrop,
       },
     });
+    console.log(
+      'from farmer / updatee/id route updateProfile',
+      updatedFarmerProfile,
+    );
     await db.user.update({
       where: { id: userId },
       data: {

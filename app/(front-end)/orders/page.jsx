@@ -10,7 +10,7 @@ export default async function page() {
   const session = await getServerSession(authOptions);
   if (!session) return;
   const userId = session?.user?.id;
-  const orders = await getData(`orders/user/${userId}`);
+  const orders = await getData(`/orders/user/${userId}`);
 
   if (orders.length === 0 || !orders) {
     return (

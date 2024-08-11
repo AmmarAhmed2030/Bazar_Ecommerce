@@ -4,7 +4,7 @@ import DataTable from '@/components/data-table-components/DataTable';
 export default async function Farmers() {
   //Heading
   //Table
-  const users = await getData('users');
+  const users = await getData('/users');
   const farmers = users.filter((user) => user.role === 'FARMER');
 
   return (

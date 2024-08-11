@@ -15,8 +15,8 @@ export default async function page() {
   const session = await getServerSession(authOptions);
   const role = session?.user?.role;
 
-  const sales = await getData('sales');
-  const orders = await getData('orders');
+  const sales = await getData('/sales');
+  const orders = await getData('/orders');
 
   if (role === 'USER') {
     return <UserDashboard />;

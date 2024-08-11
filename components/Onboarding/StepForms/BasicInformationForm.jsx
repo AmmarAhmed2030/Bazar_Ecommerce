@@ -72,11 +72,11 @@ export default function BasicInformationForm({ user }) {
               message: 'Invalid email address',
             },
           })}
+          defaultValue={user?.email}
+          disabled={true}
           errors={errors}
           type="email"
           className="w-full"
-          defaultValue={user.email}
-          disabled={true}
         />
         <TextInput
           label="Phone Number"

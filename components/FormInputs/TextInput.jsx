@@ -5,7 +5,7 @@ export default function TextInput({
   name,
   register,
   errors,
-  isRequired = true,
+  isRequired = false,
   type = 'text',
   className = 'sm:col-span-2',
   defaultValue = '',

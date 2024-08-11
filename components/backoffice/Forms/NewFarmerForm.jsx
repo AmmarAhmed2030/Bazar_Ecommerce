@@ -39,7 +39,7 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
   });
   const router = useRouter();
 
-  const id = user?.id;
+  const id = updateData?.userId;
   console.log('id : ', id);
   const isActive = watch('isActive');
 

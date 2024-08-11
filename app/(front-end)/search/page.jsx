@@ -6,7 +6,7 @@ export default async function Search({ searchParams }) {
   const { search, max, min, sort, page } = searchParams;
 
   const { products, totalLength } = await getData(
-    `products/search?${search && `search=${search}`}${sort ? `&sort=${sort}` : `&sort=asc`}${min ? `&min=${min}` : `&min=0`}${max ? `&max=${max}` : ''}${page ? `&page=${page}` : ''}`,
+    `/products/search?${search && `search=${search}`}${sort ? `&sort=${sort}` : `&sort=asc`}${min ? `&min=${min}` : `&min=0`}${max ? `&max=${max}` : ''}${page ? `&page=${page}` : ''}`,
   );
   console.log(products);
   const category = {

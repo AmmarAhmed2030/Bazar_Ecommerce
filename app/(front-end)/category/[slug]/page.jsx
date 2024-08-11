@@ -8,7 +8,7 @@ export default async function page({ params: { slug }, searchParams }) {
   const category = await getData(`/categories/filter/${slug}`);
 
   let products = await getData(
-    `products/category?catId=${category.id}${`&sort=${sort}`}${`&min=${min}`}${`&max=${max}`}${page ? `&page=${page}` : ''}`,
+    `/products/category?catId=${category.id}${`&sort=${sort}`}${`&min=${min}`}${`&max=${max}`}${page ? `&page=${page}` : ''}`,
   );
 
   return (
