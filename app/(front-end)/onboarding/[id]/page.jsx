@@ -3,7 +3,7 @@ import Steps from '@/components/Onboarding/Steps';
 import { getData } from '@/lib/getData';
 
 export default async function page({ params: { id } }) {
-  const user = await getData(`/users/${id}`);
+  const user = await getData(`users/${id}`);
   const steps = [
     {
       number: 1,

@@ -44,7 +44,13 @@ export default function ShippingDetailsForm() {
         <TextInput
           label="Street Address"
           name="streetAddress"
-          register={register}
+          register={register('streetAddress', {
+            required: 'Street Address is required',
+            minLength: {
+              value: 3,
+              message: 'Street Address must be at least 3 letters',
+            },
+          })}
           errors={errors}
           className="w-full"
         />
@@ -52,7 +58,13 @@ export default function ShippingDetailsForm() {
         <TextInput
           label="City"
           name="city"
-          register={register}
+          register={register('city', {
+            required: 'City is required',
+            minLength: {
+              value: 3,
+              message: 'City must be at least 3 letters',
+            },
+          })}
           errors={errors}
           className="w-full"
         />
@@ -60,14 +72,26 @@ export default function ShippingDetailsForm() {
         <TextInput
           label="Country"
           name="country"
-          register={register}
+          register={register('country', {
+            required: 'Country is required',
+            minLength: {
+              value: 3,
+              message: 'Country must be at least 3 letters',
+            },
+          })}
           errors={errors}
           className="w-full"
         />
         <TextInput
           label="District"
           name="district"
-          register={register}
+          register={register('district', {
+            required: 'District is required',
+            minLength: {
+              value: 3,
+              message: 'District must be at least 3 letters',
+            },
+          })}
           errors={errors}
           className="w-full"
         />

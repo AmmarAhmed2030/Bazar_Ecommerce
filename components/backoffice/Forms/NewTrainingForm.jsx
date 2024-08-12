@@ -6,7 +6,7 @@ import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextareaInput from '@/components/FormInputs/TextAreaInput';
 import TextInput from '@/components/FormInputs/TextInput';
 import ToggleInput from '@/components/FormInputs/ToggleInput';
-import { makePostRequest, makePutRequest } from '@/lib/apiRequest';
+import { makePutRequest } from '@/lib/apiRequest';
 import { generateSlug } from '@/lib/generateSlug';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -46,29 +46,16 @@ export default function NewTrainingForm({ categories, updateData }) {
     data.slug = slug;
     data.imageUrl = imageUrl;
     data.content = content;
-    if (id) {
-      makePutRequest(
-        setLoading,
-        '/api/trainings',
-        data,
-        'Training',
 
-        reset,
-        redirect,
-      );
-    } else {
-      makePostRequest(
-        setLoading,
-        '/api/trainings',
-        data,
-        'Training',
+    await makePutRequest(
+      setLoading,
+      `/api/trainings/${id}`,
+      data,
+      'Training',
 
-        reset,
-        redirect,
-      );
-      setImageUrl('');
-      setContent('');
-    }
+      reset,
+      redirect,
+    );
   }
   return (
     <div>

@@ -90,7 +90,6 @@ export default function BasicInformationForm({ user }) {
             },
           })}
           errors={errors}
-          type="number"
           className="w-full"
         />
       </div>

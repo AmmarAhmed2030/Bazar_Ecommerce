@@ -39,3 +39,50 @@ export async function DELETE(request, { params: { id } }) {
     );
   }
 }
+export async function PUT(request, { params: { id } }) {
+  console.log(id);
+  const { title, slug, imageUrl, description, content, isActive, categoryId } =
+    await request.json();
+
+  try {
+    const existingTraining = await db.training.findUnique({
+      where: { id },
+    });
+    if (!existingTraining) {
+      // const newTraining = await db.training.create({
+      //   data: {
+      //     title,
+      //     slug,
+      //     imageUrl,
+      //     description,
+      //     content,
+      //     isActive,
+      //     categoryId,
+      //   },
+      // });
+      return NextResponse.json({
+        status: 404,
+        message: 'There is no Training with this id',
+      });
+    }
+    const updatedTraining = await db.training.update({
+      where: { id },
+      data: {
+        title,
+        slug,
+        imageUrl,
+        description,
+        content,
+        isActive,
+        categoryId,
+      },
+    });
+    return NextResponse.json(updatedTraining);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: 'Failed to update Training', error },
+      { status: 500 },
+    );
+  }
+}

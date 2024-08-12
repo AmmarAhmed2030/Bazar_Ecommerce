@@ -63,7 +63,7 @@ export async function GET() {
     const farmers = await db.user.findMany({
       orderBy: { createdAt: 'desc' },
       where: { role: 'FARMER' },
-      include: { farmerProfile: true },
+      // include: { farmerProfile: true },
     });
     return NextResponse.json(farmers);
   } catch (error) {

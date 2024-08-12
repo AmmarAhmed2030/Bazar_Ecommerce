@@ -7,14 +7,16 @@ export default function Status({ row, accessorKey }) {
   const userId = row.original.id;
   const [status, setStatus] = useState(savedStatus);
   const [loading, setLoading] = useState(false);
+
   async function handleChange(e) {
     const newStatus = e.target.value === 'true'; // Convert string to boolean
     setStatus(newStatus);
+
     const data = {
       status: newStatus,
       emailVerified: true,
     };
-    // Make API request here to update status in the database
+
     try {
       setLoading(true);
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -25,23 +27,27 @@ export default function Status({ row, accessorKey }) {
         },
         body: JSON.stringify(data),
       });
+
       if (response.ok) {
-        // console.log(response);
-        setLoading(false);
+        const updatedData = await response.json();
+        setStatus(updatedData.status); // Update the status based on the API response
         toast.success(`Farmer Status Updated Successfully`);
+        window.location.reload();
       } else {
-        setLoading(false);
         toast.error('Something Went wrong');
       }
     } catch (error) {
-      setLoading(false);
       console.log(error);
+      toast.error('An error occurred while updating the status');
+    } finally {
+      setLoading(false);
     }
   }
 
   const selectBorderStyle = {
     borderColor: status ? 'green' : 'red',
   };
+
   return (
     <>
       {loading ? (

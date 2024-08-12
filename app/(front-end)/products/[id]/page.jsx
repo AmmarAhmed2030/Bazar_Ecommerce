@@ -5,10 +5,10 @@ import { getData } from '@/lib/getData';
 import React from 'react';
 
 export default async function ProductDetailPage({ params: { id } }) {
-  const product = await getData(`/products/${id}`);
+  const product = await getData(`products/${id}`);
 
   const categoryId = product.categoryId;
-  const category = await getData(`/categories/${categoryId}`);
+  const category = await getData(`categories/${categoryId}`);
   return (
     <div className="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-50">
       <Breadcrumb />

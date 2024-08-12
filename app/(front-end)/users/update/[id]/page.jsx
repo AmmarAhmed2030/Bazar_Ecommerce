@@ -3,9 +3,9 @@ import NewUserForm from '@/components/backoffice/Forms/NewUserForm';
 import { getData } from '@/lib/getData';
 
 export default async function UpdateUser({ params: { id } }) {
-  const userProfile = await getData(`/users/profile/${id}`);
+  const userProfile = await getData(`users/profile/${id}`);
 
-  const user = await getData(`/users/${id}`);
+  const user = await getData(`users/${id}`);
   console.log('userProfile from users/update/[id] : ', userProfile);
   console.log('user from users/update/[id] : ', user);
   return (

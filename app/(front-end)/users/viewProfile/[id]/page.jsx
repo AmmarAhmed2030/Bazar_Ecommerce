@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default async function UserProfile({ params: { id } }) {
   const userId = id;
-  const profile = await getData(`/users/profile/${userId}`);
+  const profile = await getData(`users/profile/${userId}`);
   console.log(profile);
   if (!profile) {
     return (

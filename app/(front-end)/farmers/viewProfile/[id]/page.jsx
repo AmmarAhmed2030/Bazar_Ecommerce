@@ -5,7 +5,7 @@ export default async function FarmerProfile({ params }) {
   const { id } = params;
   const userId = id;
   console.log('user Id from farmers viewProfile', userId);
-  const profile = await getData(`/farmers/farmer/${id}`);
+  const profile = await getData(`farmers/farmer/${id}`);
   console.log('profile Farmer from farmers viewProfile', profile);
   return (
     <div

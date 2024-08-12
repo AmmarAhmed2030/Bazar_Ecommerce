@@ -14,6 +14,8 @@ import { useState } from 'react';
 export default function HelpModal() {
   const [openModal, setOpenModal] = useState(false);
 
+  const handleCloseModal = () => setOpenModal(false);
+
   return (
     <>
       <button
@@ -24,7 +26,7 @@ export default function HelpModal() {
       </button>
       <Modal
         show={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={handleCloseModal}
         className="px-[30%] bg-black bg-opacity-50"
       >
         <Modal.Header>
@@ -35,6 +37,7 @@ export default function HelpModal() {
             <Link
               href="tel:256783363"
               className="flex items-center space-x-2 text-green-950 dark:text-slate-100 font-semibold"
+              onClick={handleCloseModal}
             >
               <div className="flex items-center w-10 h-10 bg-green-100 dark:bg-slate-800 justify-center rounded-full">
                 <Headphones className="w-6 h-6 text-green-600 dark:text-slate-100" />
@@ -44,33 +47,33 @@ export default function HelpModal() {
               </span>
             </Link>
             <Link
-              href="/track"
+              href="/orders"
               className="flex items-center space-x-2 text-green-950 dark:text-slate-100 font-semibold"
+              onClick={handleCloseModal}
             >
               <div className="flex items-center w-10 h-10 bg-green-100 dark:bg-slate-800 justify-center rounded-full">
                 <Truck className="w-6 h-6 text-green-600 dark:text-slate-100" />
               </div>
-              <Link
-                href={`/orders`}
-                className="text-green-500 dark:text-slate-100 "
-              >
-                Track Your Orders
-              </Link>
-            </Link>
-            <Link
-              href="tel:256783363"
-              className="flex items-center space-x-2 text-green-950 dark:text-slate-100 font-semibold"
-            >
-              <div className="flex items-center w-10 h-10 bg-green-100 dark:bg-slate-800 justify-center rounded-full">
-                <CornerDownLeft className="w-6 h-6 text-green-600 dark:text-slate-100" />
-              </div>
               <span className="text-green-500 dark:text-slate-100 ">
-                Retuns and Refunds
+                Track Your Orders
               </span>
             </Link>
             <Link
               href="tel:256783363"
               className="flex items-center space-x-2 text-green-950 dark:text-slate-100 font-semibold"
+              onClick={handleCloseModal}
+            >
+              <div className="flex items-center w-10 h-10 bg-green-100 dark:bg-slate-800 justify-center rounded-full">
+                <CornerDownLeft className="w-6 h-6 text-green-600 dark:text-slate-100" />
+              </div>
+              <span className="text-green-500 dark:text-slate-100 ">
+                Returns and Refunds
+              </span>
+            </Link>
+            <Link
+              href="tel:256783363"
+              className="flex items-center space-x-2 text-green-950 dark:text-slate-100 font-semibold"
+              onClick={handleCloseModal}
             >
               <div className="flex items-center w-10 h-10 bg-green-100 dark:bg-slate-800 justify-center rounded-full">
                 <MessageSquare className="w-6 h-6 text-green-600 dark:text-slate-100" />

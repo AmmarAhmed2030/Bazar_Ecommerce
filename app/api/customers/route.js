@@ -6,7 +6,7 @@ export async function GET() {
     const customers = await db.user.findMany({
       orderBy: { createdAt: 'desc' },
       where: { role: 'USER' },
-      include: { profile: true },
+      // include: { profile: true },
     });
     return NextResponse.json(customers);
   } catch (error) {

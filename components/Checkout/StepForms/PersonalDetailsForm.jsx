@@ -23,12 +23,13 @@ export default function PersonalDetailsForm() {
 
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: { ...existingFormData } });
+  } = useForm({ defaultValues: { ...existingFormData, email: email } });
 
   const dispatch = useDispatch();
 
   function processData(data) {
     data.userId = userId;
+    data.email = email;
     dispatch(updateCheckoutFormData(data));
     dispatch(setCurrentStep(currentStep + 1));
   }
@@ -80,7 +81,6 @@ export default function PersonalDetailsForm() {
           defaultValue={email}
           disabled={true}
           type="email"
-          isRequired={true}
           className="w-full"
         />
         <TextInput
@@ -95,7 +95,6 @@ export default function PersonalDetailsForm() {
             },
           })}
           errors={errors}
-          type="number"
           className="w-full"
         />
       </div>

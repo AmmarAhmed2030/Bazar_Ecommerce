@@ -4,7 +4,7 @@ import React from 'react';
 
 export default async function page({ searchParams }) {
   const { userId } = searchParams;
-  const user = await getData(`/users/${userId}`);
+  const user = await getData(`users/${userId}`);
   console.log(userId, user);
 
   const { email } = user;

@@ -48,8 +48,8 @@ export default function Sorting({ title, slug, isSearch }) {
               key={i}
               className={`${
                 actualPathname === link.href
-                  ? 'border border-slate-500 dark:bg-slate-800 bg-lime-600 text-white px-2 py-1 dark:text-lime-400'
-                  : 'border border-slate-500 px-2 py-1 text-white'
+                  ? 'border border-slate-500 dark:bg-slate-800   bg-lime-600 text-slate-50 px-2 py-1 dark:text-lime-400'
+                  : 'border border-slate-500 px-2 py-1 dark:text-slate-50 text-slate-800'
               }`}
               href={link.href}
             >

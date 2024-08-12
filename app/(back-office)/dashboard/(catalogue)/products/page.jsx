@@ -14,7 +14,7 @@ export default async function Products() {
     return null;
   }
   const role = session?.user?.role;
-  const allProducts = await getData('/products');
+  const allProducts = await getData('products');
   const id = session?.user?.id;
   const farmerProducts = allProducts.filter((product) => product.userId === id);
 

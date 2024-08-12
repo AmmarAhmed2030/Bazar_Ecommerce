@@ -28,6 +28,7 @@ export default function OrderStatus({ row, accessorKey }) {
         // console.log(response);
         setLoading(false);
         toast.success(`Order Status Updated Successfully`);
+        window.location.reload();
       } else {
         setLoading(false);
         toast.error('Something Went wrong');

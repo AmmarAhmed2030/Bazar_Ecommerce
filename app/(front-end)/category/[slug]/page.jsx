@@ -5,10 +5,10 @@ import React from 'react';
 export default async function page({ params: { slug }, searchParams }) {
   const { sort = 'asc', max = '', min = 0, page } = searchParams;
 
-  const category = await getData(`/categories/filter/${slug}`);
+  const category = await getData(`categories/filter/${slug}`);
 
   let products = await getData(
-    `/products/category?catId=${category.id}${`&sort=${sort}`}${`&min=${min}`}${`&max=${max}`}${page ? `&page=${page}` : ''}`,
+    `products/category?catId=${category.id}${`&sort=${sort}`}${`&min=${min}`}${`&max=${max}`}${page ? `&page=${page}` : ''}`,
   );
 
   return (

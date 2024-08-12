@@ -6,7 +6,6 @@ import { User2 } from 'lucide-react';
 import ThemeSwitcherBtn from '../ThemeSwitcherBtn';
 import CartCount from './CartCount';
 import UserAvatar from '../backoffice/UserAvatar';
-import HelpModal from './HelpModal';
 
 import { useSession } from 'next-auth/react';
 
@@ -31,7 +30,7 @@ export default function Navbar() {
         <div className="flex-grow hidden md:block">
           <SearchForm />
         </div>
-        <HelpModal />
+        {/* <HelpModal /> */}
         <div className="flex gap-2 md:gap-4">
           <CartCount />
         </div>
