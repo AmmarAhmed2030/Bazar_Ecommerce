@@ -10,12 +10,15 @@ import {
 import ArrayItemsInput from '@/components/FormInputs/ArrayItemsInput';
 
 export default function FarmDetailsForm() {
-  const [products, setProducts] = useState([]);
-  const dispatch = useDispatch();
-  const currentStep = useSelector((store) => store.onboarding.currentStep);
   const existingFormData = useSelector(
     (store) => store.onboarding.onboardingFormData,
   );
+  const [products, setProducts] = useState(
+    existingFormData.products ? existingFormData.products : [],
+  );
+  const dispatch = useDispatch();
+  const currentStep = useSelector((store) => store.onboarding.currentStep);
+
   const {
     register,
 

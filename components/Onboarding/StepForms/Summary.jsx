@@ -63,7 +63,7 @@ export default function Summary({ farmerId }) {
       <div className="flex">
         <h2>Here are your Details</h2>
       </div>
-      <div className="mt-4 flex justify-between items-center px-6">
+      <div className="mt-4 flex justify-between items-center px-6 gap-4">
         <button
           onClick={handlePrevious}
           type="submit"
@@ -74,7 +74,7 @@ export default function Summary({ farmerId }) {
         </button>
         {loading ? (
           <button className="inline-flex items-center px-6 py-3 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-slate-800 dark:bg-lime-600 dark:hover:bg-lime-700">
-            <span>Processing please wait...</span>
+            <span>wait...</span>
           </button>
         ) : (
           <button
@@ -82,7 +82,7 @@ export default function Summary({ farmerId }) {
             onClick={submitData}
             className="inline-flex items-center px-6 py-3 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-900 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-slate-800 dark:bg-lime-600 dark:hover:bg-lime-700"
           >
-            <span>Submit Data</span>
+            <span>Submit</span>
             <ChevronRight className="w-5 h-5 ml-2" />
           </button>
         )}

@@ -25,9 +25,9 @@ export default async function page({ params: { id } }) {
 
   return (
     <div className="bg-white dark:bg-slate-950 min-h-screen">
-      <div className="max-w-3xl mx-auto my-6 bg-white border border-slate-700 dark:bg-slate-950 p-6 rounded-lg">
+      <div className="max-w-3xl mx-auto my-6 bg-white border border-slate-700 dark:bg-slate-950 py-6 xs:px-6 rounded-lg">
         <Steps steps={steps} />
-        <div className="w-full  p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full  p-4 bg-white border border-slate-200 rounded-lg shadow  dark:bg-slate-800 dark:border-slate-700">
           <StepForm farmerId={id} user={user} />
         </div>
       </div>

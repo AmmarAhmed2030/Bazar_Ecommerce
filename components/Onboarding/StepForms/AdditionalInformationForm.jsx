@@ -10,12 +10,15 @@ import ImageInput from '@/components/FormInputs/ImageInput';
 import TextareaInput from '@/components/FormInputs/TextAreaInput';
 
 export default function AdditionalInformationForm() {
-  const [imageUrl, setImageUrl] = useState('');
-  const dispatch = useDispatch();
-  const currentStep = useSelector((store) => store.onboarding.currentStep);
   const existingFormData = useSelector(
     (store) => store.onboarding.onboardingFormData,
   );
+  const [imageUrl, setImageUrl] = useState(
+    existingFormData?.imageUrl ? existingFormData.imageUrl : '',
+  );
+  const dispatch = useDispatch();
+  const currentStep = useSelector((store) => store.onboarding.currentStep);
+
   console.log('existingFormData from additional ', existingFormData);
   const {
     register,
