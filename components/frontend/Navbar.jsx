@@ -12,7 +12,7 @@ import { useSession } from 'next-auth/react';
 export default function Navbar() {
   const { status } = useSession();
   return (
-    <div className="bg-white dark:bg-slate-700  px-4  flex-col">
+    <div className="bg-white dark:bg-slate-700 pb-3 md:pb-0  px-4  flex-col">
       <div className="flex items-center justify-between py-3 max-w-7xl mx-auto gap-2 md:gap-8">
         {' '}
         <Link href="/" className="items-center py-2  flex">
@@ -47,7 +47,7 @@ export default function Navbar() {
           </Link>
         )}
       </div>
-      <div className="md:hidden">
+      <div className="md:hidden ">
         <SearchForm />
       </div>
     </div>
