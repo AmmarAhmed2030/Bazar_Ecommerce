@@ -125,14 +125,9 @@ export default function NewUserForm({ updateData = {}, user = {} }) {
           <TextInput
             label="Phone"
             name="phone"
-            type="tel"
             register={register('phone', {
               required: 'Phone number is required',
-              valueAsNumber: true,
-            validate: {
-              positive: (value) =>
-                value >= 0 || 'Only positive numbers are allowed',
-            },
+
               pattern: {
                 value: /^[0-9]{10,15}$/,
                 message:
@@ -142,7 +137,7 @@ export default function NewUserForm({ updateData = {}, user = {} }) {
             errors={errors}
             className="w-full"
           />
-          
+
           <TextInput
             label="Email Address"
             name="email"

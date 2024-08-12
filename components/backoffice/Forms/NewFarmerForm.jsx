@@ -87,7 +87,6 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
           <TextInput
             label="Farmer's Phone"
             name="phone"
-            type="tel"
             register={register('phone', {
               required: 'Phone number is required',
               pattern: {
@@ -143,7 +142,6 @@ export default function NewFarmerForm({ updateData = {}, user = {} }) {
           />
           <TextInput
             label="Farmer's Contact Person Phone With Country Code"
-            type="tel"
             name="contactPersonPhone"
             register={register('contactPersonPhone', {
               required: 'Phone number is required',
