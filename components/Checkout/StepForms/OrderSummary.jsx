@@ -40,10 +40,15 @@ export default function OrderSummary() {
         body: JSON.stringify(combinedData),
       });
       const responseData = await response.json();
+      console.log('order response from order summary', responseData);
       if (response.ok) {
         setLoading(false);
         toast.success('Order Created Successfully');
-        router.push(`/order-confirmation/${responseData.id}`);
+        if (responseData.paymentMethod === 'Cash On Delivery') {
+          router.push(`/order-confirmation/${responseData.id}`);
+        } else {
+          router.push(`/online-payment/${responseData.id}`);
+        }
       } else {
         setLoading(false);
         toast.error('Something went Wrong please try again');
@@ -110,3 +115,5 @@ export default function OrderSummary() {
     </div>
   );
 }
+//Ae62cv9N1wnpm1QfMZ0JBa7x7hzVtUArcBF_PQKZU1pAc2g2d2yLa4vGyc0KHSilfBIulpKtJHAIwtOv     client ID
+//ECkkA_hr2tveYBroS5n3TfviZ3jlyjuxm4b23XUlZiaI8aQCf1VIEEzyB7LWTNUsibNWk5SDW1OcxAWa     secret key
