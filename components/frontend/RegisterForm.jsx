@@ -38,8 +38,7 @@ export default function RegisterForm({ role = 'USER' }) {
         if (role === 'USER') {
           router.push('/');
         } else {
-          const { data } = responseData;
-          router.push(`/onboarding/${data.id}`);
+          router.push(`/verify-email}`);
         }
       } else {
         setLoading(false);

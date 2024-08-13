@@ -2,8 +2,8 @@ import db from '@/lib/db';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
-//import nodemailer from 'nodemailer';
-//import { generateEmailHtml } from '@/components/email-template';
+import nodemailer from 'nodemailer';
+import { generateEmailHtml } from '@/components/email-template';
 import base64url from 'base64url';
 
 export async function POST(request) {
@@ -39,48 +39,48 @@ export async function POST(request) {
         verificationToken: token,
       },
     });
+    if (role === 'FARMER') {
+      const userId = newUser.id;
+      const subject = 'Complete Your Onboarding';
+      const description =
+        'Thank you for creating an account with us. Please click the link below to complete your onboarding process.';
+      const linkText = 'Verify Your Account';
+      const redirectUrl = `onboarding/${userId}?token=${token}`;
 
-    // Send an email if the role is 'FARMER'
-    // if (role === 'FARMER') {
-    //   const userId = newUser.id;
-    //   const subject = 'Complete Your Onboarding';
-    //   const description =
-    //     'Thank you for creating an account with us. Please click the link below to complete your onboarding process.';
-    //   const linkText = 'Verify Your Account';
-    //   const redirectUrl = `onboarding/${userId}?token=${token}`;
+      // Set up the transporter for Nodemailer
+      const transporter = nodemailer.createTransport({
+        service: 'gmail', // or any other service,
+        host: 'smtp.gmail.com',
+        secure: false,
+        port: 587,
+        auth: {
+          // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+          user: 'ammarahmed10000@gmail.com',
+          pass: 'qvly wxkb bnri nabl',
+        },
+      });
 
-    //   // Set up the transporter for Nodemailer
-    //   const transporter = nodemailer.createTransport({
-    //     service: 'gmail', // or any other service,]
-    //     secure: false,
-    //     auth: {
-    //       // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    //       user: 'ammarahmed10000@gmail.com',
-    //       pass: 'xerox20/30/*',
-    //     },
-    //   });
+      try {
+        // Send the email
+        const emailHtml = generateEmailHtml({
+          name,
+          redirectUrl,
+          linkText,
+          description,
+          subject,
+        });
+        const sendMailResponse = await transporter.sendMail({
+          from: '<ammarahmed10000@gmail.com>', // Sender address
+          to: email, // List of receivers
+          subject: subject, // Subject line
+          html: emailHtml,
+        });
 
-    //   try {
-    //     // Send the email
-    //     const emailHtml = generateEmailHtml({
-    //       name,
-    //       redirectUrl,
-    //       linkText,
-    //       description,
-    //       subject,
-    //     });
-    //     const sendMailResponse = await transporter.sendMail({
-    //       from: '<ammarahmed10000@gmail.com>', // Sender address
-    //       to: email, // List of receivers
-    //       subject: subject, // Subject line
-    //       html: emailHtml,
-    //     });
-
-    //     console.log('Email sent successfully:', sendMailResponse);
-    //   } catch (emailError) {
-    //     console.error('Failed to send email:', emailError);
-    //   }
-    // }
+        console.log('Email sent successfully:', sendMailResponse);
+      } catch (emailError) {
+        console.error('Failed to send email:', emailError);
+      }
+    }
 
     return NextResponse.json(
       {

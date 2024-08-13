@@ -47,10 +47,16 @@ export default function ForgotPasswordForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
       {showNotification && (
-        <Alert color="failure" icon={HiInformationCircle}>
-          <span className="font-medium">Please Check your Email!</span> We have
-          sent you a Password Reset Link and Click on the Link in Order to
-          create a new password
+        <Alert
+          color="failure"
+          icon={HiInformationCircle}
+          className="text-slate-800 dark:text-slate-200"
+        >
+          <span className="font-medium text-slate-800 dark:text-slate-200">
+            Please Check your Email!
+          </span>{' '}
+          We have sent you a Password Reset Link and Click on the Link in Order
+          to create a new password
         </Alert>
       )}
       <div>

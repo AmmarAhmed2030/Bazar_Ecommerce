@@ -3,7 +3,6 @@ import {
   Container,
   Head,
   Html,
-  Img,
   Link,
   Preview,
   Section,
@@ -27,13 +26,6 @@ const EmailTemplate = ({
       <Preview>{subject}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img
-            src={`${baseUrl}/static/github.png`}
-            width="32"
-            height="32"
-            alt="Github"
-          />
-
           <Text style={title}>{linkText}</Text>
 
           <Section style={section}>

@@ -113,6 +113,12 @@ export default function LoginForm() {
           Sign Up
         </Link>
       </p>
+      <Link
+        href="/forgot-password"
+        className="text-slate-800 hover:text-lime-600 dark:text-slate-50 dark:hover:text-lime-600 transition-all duration-500 hover:underline-offset-1 text-sm"
+      >
+        Forgot Password ?
+      </Link>
     </form>
   );
 }
