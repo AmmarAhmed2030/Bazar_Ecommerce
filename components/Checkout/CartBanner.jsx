@@ -5,15 +5,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function CartBanner() {
-  const cartItems = useSelector((store) => store.cart);
+  const cartItems = useSelector((store) => store.cart || []);
   let subTotal = 0;
+
   if (cartItems.length > 0) {
-    subTotal =
-      cartItems
-        .reduce((acc, currentItem) => {
-          return acc + currentItem.salePrice * currentItem.qty;
-        }, 0)
-        .toFixed(2) ?? 0;
+    subTotal = cartItems
+      .reduce(
+        (acc, currentItem) => acc + currentItem.salePrice * currentItem.qty,
+        0,
+      )
+      .toFixed(2);
   }
 
   return (
@@ -25,9 +26,9 @@ export default function CartBanner() {
               <ShoppingBag className="w-6 h-6" />
             </div>
             <p className="ml-3 text-base font-normal text-gray-900">
-              You have {cartItems.length > 0 && cartItems.length} items in cart.
-              Sub total is
-              <span className="font-bold"> EGP {subTotal}</span>
+              You have {cartItems.length > 0 ? cartItems.length : 0} items in
+              your cart. Subtotal is{' '}
+              <span className="font-bold">EGP {subTotal}</span>
             </p>
           </div>
 
@@ -35,21 +36,21 @@ export default function CartBanner() {
             <Link
               href="/cart"
               className="
-                            inline-flex
-                            items-center
-                            px-4
-                            py-2
-                            text-sm
-                            font-bold
-                            text-gray-600
-                            transition-all
-                            duration-200
-                            border border-gray-300
-                            rounded-md
-                            bg-gray-50
-                            hover:bg-white hover:text-gray-900
-                            focus:outline-none focus:ring-2 focus:text-gray-900 focus:ring-offset-2 focus:ring-gray-500
-                        "
+                inline-flex
+                items-center
+                px-4
+                py-2
+                text-sm
+                font-bold
+                text-gray-600
+                transition-all
+                duration-200
+                border border-gray-300
+                rounded-md
+                bg-gray-50
+                hover:bg-white hover:text-gray-900
+                focus:outline-none focus:ring-2 focus:text-gray-900 focus:ring-offset-2 focus:ring-gray-500
+              "
             >
               Edit cart
             </Link>

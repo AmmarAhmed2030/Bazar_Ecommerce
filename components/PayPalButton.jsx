@@ -1,5 +1,6 @@
+'use client';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-
+import React from 'react';
 const PayPalButton = ({ amount }) => {
   const createOrder = async () => {
     const response = await fetch('/api/paypal/create-order', {

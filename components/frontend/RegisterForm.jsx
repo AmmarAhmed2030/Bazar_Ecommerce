@@ -38,7 +38,7 @@ export default function RegisterForm({ role = 'USER' }) {
         if (role === 'USER') {
           router.push('/');
         } else {
-          router.push(`/verify-email}`);
+          router.push(`/verify-email`);
         }
       } else {
         setLoading(false);
